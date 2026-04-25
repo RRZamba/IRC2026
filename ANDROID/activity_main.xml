@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/edtNome"
+        android:layout_width="312dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Digite o nome"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtCurso"
+        android:layout_width="307dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="Digite o curso"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtNome" />
+
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="303dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="32dp"
+        android:text="Salvar na nuvem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtCurso" />
+
+    <TextView
+        android:id="@+id/txtLista"
+        android:layout_width="278dp"
+        android:layout_height="318dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="42dp"
+        android:text="Lista de Alunos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSalvar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
