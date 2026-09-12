@@ -1,0 +1,80 @@
+1)Configurando Interface do Roteador
+
+Router> enable
+Router# configure terminal
+Router(config)# interface GigabitEthernet0/0/0
+Router(config-if)# ip address 192.168.10.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+
+Router(config)# interface GigabitEthernet0/0/1
+Router(config-if)# ip address 192.168.20.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+
+
+2) Configurando Interface do Roteador com Rota Estática (Para a Rede alcançar a Rede B)
+Router> enable
+Router# configure terminal
+Router(config)# interface GigabitEthernet0/0/0
+Router(config-if)# ip address 192.168.10.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+
+Router(config)# interface GigabitEthernet0/0/1
+Router(config-if)# ip address 10.0.0.1 255.255.255.252
+Router(config-if)# no shutdown
+Router(config-if)# exit
+
+Router(config)# ip route 192.168.20.0 255.255.255.0 10.0.0.2
+
+
+3) Configurando o Switch, criando VLANS, associando com as portas (Access e Trunk)
+Switch> enable
+Switch# configure terminal
+
+Switch(config)# vlan 10
+Switch(config-vlan)# name ADM
+Switch(config-vlan)# exit
+
+Switch(config)# vlan 20
+Switch(config-vlan)# name LAB
+Switch(config-vlan)# exit
+
+Switch(config)# interface FastEthernet0/1
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10
+Switch(config-if)# exit
+
+Switch(config)# interface FastEthernet0/2
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 20
+Switch(config-if)# exit
+
+Switch(config)# interface FastEthernet0/24
+Switch(config-if)# switchport mode trunk
+Switch(config-if)# exit
+
+
+4) Configurando o Roteador e criando subinterfaces associadas as VLANS do Switch
+Router> enable
+Router# configure terminal
+
+Router(config)# interface GigabitEthernet0/0/0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+
+Router(config)# interface GigabitEthernet0/0/0.10
+Router(config-subif)# encapsulation dot1Q 10
+Router(config-subif)# ip address 192.168.10.1 255.255.255.0
+Router(config-subif)# exit
+
+Router(config)# interface GigabitEthernet0/0/0.20
+Router(config-subif)# encapsulation dot1Q 20
+Router(config-subif)# ip address 192.168.20.1 255.255.255.0
+Router(config-subif)# exit
+
+
+
+
+
